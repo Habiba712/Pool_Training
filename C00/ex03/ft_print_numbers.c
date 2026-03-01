@@ -1,18 +1,20 @@
 #include <unistd.h>
 
-void ft_putchar(int c){
+void ft_putchar(char c){
 	write(1, &c, 1);
+
 }
 
-void ft_print_numbers(int n){
-	
-	if(n > 9){
-		ft_print_numbers(n / 10);
+void ft_print_numbers(void){
+	char x;
+	x = '0';
+
+	while (x <= '9'){
+	ft_putchar(x);
+x++;	
 	}
-ft_putchar((n % 10) + 48);
 }
-
 int main(void){
-	ft_print_numbers(123);
-	return 0;
+ft_print_numbers();
+return 0;
 }
