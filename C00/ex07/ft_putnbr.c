@@ -5,9 +5,8 @@ void ft_putchar(char c){
 	write(1, &c, 1);
 }
 
-void ft_putnbr(int nb){
-	long n;
-	n = nb;	
+void ft_putnbr(int n){
+		
 	if (n < 0){
 		ft_putchar('-');
 		n = -n;
@@ -21,6 +20,6 @@ void ft_putnbr(int nb){
 }
 
 int main(void){
-	ft_putnbr(0);
+	ft_putnbr(217483648);
 	return 0;
 }
