@@ -21,11 +21,6 @@ void ft_putnbr(int n){
 void ft_ultimate_ft(int *********nbr){
 	
 	*********nbr = 133338;
-	int number;
-	number = *********nbr;
-	ft_putnbr(number);
-
-
 }
 
 int main (void){
@@ -52,5 +47,7 @@ int main (void){
 	p9 = &p8;
 	
 	ft_ultimate_ft(p9);
+	ft_putnbr(n);
 	return 0;
+
 }
