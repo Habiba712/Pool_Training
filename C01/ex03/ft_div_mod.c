@@ -31,15 +31,19 @@ int main(void){
 	int res_mod;
 	
 	a = 932490;
-	b = 2784;
+	b = 1230;
 
+	if(b != 0){
 	ft_div_mod(a, b, &res_div, &res_mod);
+	
 	ft_putchar('A');
-	ft_putnbr(res_div);
+        ft_putnbr(res_div);
 	ft_putchar('\n');
+
 	ft_putchar('B');
 	ft_putnbr(res_mod);
 	ft_putchar('\n');
+	}
 	
 	return 0;
 
