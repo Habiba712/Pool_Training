@@ -1,0 +1,21 @@
+Ex00 & Ex01: The Comparison Duo (strcmp & strncmp)
+The Logic: strcmp compares two strings to see if they are identical. strncmp does the same thing, but it has a limit, n, which tells the computer exactly how many characters (or "comparison steps") to check before stopping.
+
+The Result: They return 0 if the strings match perfectly within that limit, or the difference between the characters if they don't.
+
+Ex02 & Ex03: The Glue Duo (strcat & strncat)
+The Logic: In strcat, we concatenate two strings. Essentially, we "glue" the source (src) to the end of the destination (dest) and make sure it ends with a \0.
+
+The Limit: strncat is the same, but with an n value. This determines exactly how many characters from the source we want to glue. For example, if src is "Habiba" and n is 2, we only glue "Ha" to the end of dest.
+
+Ex04: The Searcher (strstr)
+The Logic: This is used to find a specific string (the "needle") inside another string (the "haystack").
+
+The Result: It returns a pointer (the memory address) to the first time that word appears. If it's not there, it returns NULL (0).
+
+Ex05: The Safety Boss (strlcat)
+The Logic: This one is tricky. It takes two strings and a size, which represents the total capacity of the destination box.
+
+The Math: First, you calculate the lengths of both src and dest. If the size is less than or equal to the dest length, there is no room to add anything, so we just return size + src_len.
+
+The Safety Guard: If there is room (size > dest_len), we fill the extra space with characters from src. The condition i + 1 < size is the "Bodyguard"—it ensures we stop exactly one spot before the end of the buffer so we can manually add the \0 to close the string safely.
