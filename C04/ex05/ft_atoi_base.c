@@ -65,8 +65,8 @@ int ft_atoi_base(char *str, char *base){
 
 int main(void){
 
-	char *str = " --12y345";
-	char *base = "0123456789";
+	char *str = "1234";
+	char *base = "a34+324";
 
 	int res = ft_atoi_base(str, base);
 	printf("%d", res);
