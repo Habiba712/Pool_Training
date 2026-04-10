@@ -5,27 +5,24 @@ int ft_is_prime(int nb){
 	long n;
 	n = nb;
 	long index = 1;
-	int devided_one = 0;
 	
+	
+	//let's assume that n is prime and try to prove that wrong !!
+	
+	if( n <= 1 ) return 0;
+	index = 2;
 
-	if( n == 0 || n == 1 ) return 0;
-	while(index <= n ){
-		if((n % index) == 0 && (index == 1)){
-			devided_one = 1;
-			index++;
-		}
-		if((n % index) == 0 && (index == n)){
-			return 1;
-		}
+	while(index <= n / index ){
+		if((n % index) == 0 ) return 0;
 	index++;
 	}
-	return 0;
+	return 1;
 	
 }
 
 int main(void){
 
-	int number = 1223;
+	int number = 2147483647;
 	int res = ft_is_prime(number);
 	printf("%d", res);
 	printf("%c", '\n');
