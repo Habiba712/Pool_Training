@@ -36,6 +36,7 @@ int solve(int board[8],int col){
 		}
 		row++;
 	}
+	
 	return count;
 
 
