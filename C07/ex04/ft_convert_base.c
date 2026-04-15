@@ -2,6 +2,34 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int get_index(char c, char *base){
+        int i = 0;
+
+        while(base[i]){
+                if(base[i] == c) return i;
+	        i++;
+	        }
+
+        return -1;
+
+}
+int is_base_valid(char *base){
+        int i = 0;
+        int j = 0;
+        if(!base[0] || !base[1]) return 0;
+        while(base[i]){
+               if(base[i] == ' ' || base[i] == '+'
+                 || base[i] == '-') return 0;
+               j = i + 1;
+               while(base[j]){
+                    if(base[i] == base[j]) return 0;
+                       j++;
+               }
+	i++;
+        }
+       return i;
+
+}
 
 
 int ft_atoi_base(char *nbr, char *base){
@@ -9,6 +37,7 @@ int ft_atoi_base(char *nbr, char *base){
 	int sign = 1;
 	int nbase = 0;
 	int value = 0;
+	int res = 0;
 
 	nbase = is_base_valid(base);
 	if(nbase == 0) return 0;
@@ -36,93 +65,76 @@ int ft_atoi_base(char *nbr, char *base){
 	return res * sign;
 }
 
-int get_index(char *c, char *base){
+
+
+int get_num_len(int nbr, int nbase){
 	int i = 0;
-
-	while(base[i]){
-		if(base[i] == c) return i;
-	i++;
-	}
-
-	return -1;
-
-}
-
-char ft_putnbr(int nbr){
-
-	if(nbr < 0) 
-
-
-}
-char ft_itoa_base(int nbr, char *base){
-	int i = 0;
-
-
-	char *ptr = (char *)malloc(sizeof(char) * 1000);
-
-	if(nbr < 0){
-		ptr[0] = "-";		
-	}
-	if
-
-
-
-	return charac;
-}
-
-int is_base_valid(char *base){
-	int i = 0;
-	int j = 0;
-
-	if(!base[0] || !base[1]) return 0;
+	int len = 0;
 	
-	while(base[i]){
-		if(base[i] == ' ' || base[i] == '+'
-		   base[i] == '-') return 0;
-		j = i + 1;
-		while(base[j]){
-			if(base[i] == base[j]) return 0;
-		j++;
-		}	
-	i++;
+	while((nbr / nbase) != 0){
+		nbr = nbr / nbase;
+		len++;
 	}
-	return i;
-	
 
+	return len;
+}
+
+char *ft_itoa_base(int nbr, char *base){
+	int i = 0;
+	int nbase = is_base_valid(base);
+	int len = get_num_len(nbr, nbase);
+
+	char *ptr = (char *)malloc(sizeof(char) * len);
+	long n;
+
+	if(!ptr) return NULL;
+	n = nbr;
+
+	ptr[len] = '\0';
+
+	if(n < 0){
+		ptr[0] = '-';
+		n = -n;
+	}
+	
+	if(n == 0) ptr[len - 1] = base[0];
+	
+	while(n > 0){
+		ptr[len - 1] = base[n % nbase];
+		n /= nbase;
+		len--;
+	
+	}
+	return ptr;
 }
 
 
-char *ft_conver_base(char *nbr, char *base_from, char *base_to){
+
+char *ft_convert_base(char *nbr, char *base_from, char *base_to){
 
 	//turn the nbr to integer based on base_from
-	int intger_base_from = ft_atoi_base(nbr, base_from);
+	int integer_base_from = ft_atoi_base(nbr, base_from);
 
 	//turn the nbr to char based on base_to
-	char integer_base_to = ft_itoa_base(integer_base_from, base_to); 	
+	char *integer_base_to = ft_itoa_base(integer_base_from, base_to); 	
 
 
-
+	return integer_base_to;
 }
-
-
-
-
-
-
 
 
 
 int main(void){
 
-	char *nbr = "0100101110101011";
-	char *base_from = "01";
+	char *nbr = "1337";
+	char *base_from = "0123456789";
 	char *base_to = "0123456789abcdef";
 	int i = 0;
 	
 	char *res = ft_convert_base(nbr, base_from, base_to);
 	
 	while(res[i]){
-		printf("%c", res[i]);
+		write(1, &res[i], 1);
 		i++;
 	}
 
