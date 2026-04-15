@@ -46,16 +46,17 @@ int ft_atoi_base(char *nbr, char *base){
 		i++;
 
 	while(nbr[i]){
-		if(nbr[i] == '+') sign = sign;
-		if(nbr[i] == '-') sign = -sign;
-	i++;	
+		if(nbr[i] == '+' || nbr[i] == '-'){
+			sign = -sign;
+		}
+		i++;	
 	}
 	
-	i = 0;
+
 	while(nbr[i]){
 
 	    value = get_index(nbr[i], base);
-	    if(value = -1) break;
+	    if(value == -1) break;
 	    res = res * nbase + value;
 
 
@@ -70,9 +71,11 @@ int ft_atoi_base(char *nbr, char *base){
 int get_num_len(int nbr, int nbase){
 	int i = 0;
 	int len = 0;
-	
-	while((nbr / nbase) != 0){
-		nbr = nbr / nbase;
+	long n = nbr;
+	if (n <= 0) len++;
+
+	while(n != 0){
+		n /= nbase;
 		len++;
 	}
 
@@ -84,7 +87,7 @@ char *ft_itoa_base(int nbr, char *base){
 	int nbase = is_base_valid(base);
 	int len = get_num_len(nbr, nbase);
 
-	char *ptr = (char *)malloc(sizeof(char) * len);
+	char *ptr = (char *)malloc(sizeof(char) * (len + 1));
 	long n;
 
 	if(!ptr) return NULL;
