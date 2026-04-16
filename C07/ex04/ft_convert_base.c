@@ -45,9 +45,9 @@ int ft_atoi_base(char *nbr, char *base){
 	while(nbr[i] == ' ' || (nbr[i] >= 9 && nbr[i] <= 13))
 		i++;
 
-	while(nbr[i]){
-		if(nbr[i] == '+' || nbr[i] == '-'){
-			sign = -sign;
+	while(nbr[i] == '+' || nbr[i] == '-'){
+		if(nbr[i] == '-'){
+		    sign = -sign;
 		}
 		i++;	
 	}
@@ -129,8 +129,8 @@ char *ft_convert_base(char *nbr, char *base_from, char *base_to){
 
 int main(void){
 
-	char *nbr = "1337";
-	char *base_from = "0123456789";
+	char *nbr = "1010111101100001";
+	char *base_from = "01";
 	char *base_to = "0123456789abcdef";
 	int i = 0;
 	
@@ -140,6 +140,6 @@ int main(void){
 		write(1, &res[i], 1);
 		i++;
 	}
-
+	write(1, "\n", 1);
 	return 0;
 }
