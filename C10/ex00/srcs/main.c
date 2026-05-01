@@ -7,7 +7,7 @@ int main(int argc, char **argv){
 		ft_puterr("File name missing \n");
 	}
 	else if(argc > 2){
-		ft_puterr("Too many arguments");
+		ft_puterr("Too many arguments \n");
 	}
 	else{
 		display_file(argv[1]);

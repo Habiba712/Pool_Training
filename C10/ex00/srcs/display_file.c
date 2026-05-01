@@ -7,7 +7,7 @@ void display_file(char *file){
 	int fd;
 	char buffer[1024];
 	int  bytes;
-	char *err = "Fd is less than 0";
+	char *err = "This file doesn't exist .\n";
 
 	fd = open(file, O_RDONLY);
 	if(fd < 0){
@@ -18,7 +18,11 @@ void display_file(char *file){
 
 	while(bytes > 0){
 		write(1, buffer, bytes);
+		// take up to 1024 bytes from the file and put them into the buffer
 		bytes = read(fd, buffer, 1024);
+		//bytes actually read
+		//0 -> end of file
+		//-1 -> error
 	
 	}
 	close(fd);
