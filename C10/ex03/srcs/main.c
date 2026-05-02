@@ -1,19 +1,18 @@
 #include <unistd.h>
-#include "ft_tail.h"
-
+#include "ft_hexdump.h"
 
 
 int main(int ac, char **av){
-	int n = 3;
+	
+	if (ac < 2) return 0;
+
 	int i = 1;
 
-	if (ac < 2) return 0;
-	
 	while(i < ac){
-		ft_tail(n , av[i]);
-		i++;	
+		ft_hexdump(av[i]);	
+		i++;
 	}
 
-
 	return 0;
+
 }

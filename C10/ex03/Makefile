@@ -1,9 +1,11 @@
-NAME= ft_tail
-SRCS= srcs/ft_tail.c srcs/main.c
-OBJS= $(SRCS:.c=.o)
-CFLAGS= -Wall -Werror -Wextra
+NAME= ft_hexdump
+
+SRCS= srcs/main.c srcs/ft_hexdump.c
 INCLUDES= -I includes
+OBJS= $(SRCS:.c=.o)
+
 CC= gcc
+CFLAGS= -Wall -Werror -Wextra
 
 all: $(NAME)
 
@@ -16,7 +18,7 @@ $(NAME): $(OBJS)
 clean:
 	rm -f $(OBJS)
 
-fclean:
+fclean: clean 
 	rm -f $(NAME)
 
 re: fclean all
